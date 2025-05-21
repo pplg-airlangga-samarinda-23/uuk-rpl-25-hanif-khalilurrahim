@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role = $_POST['role'];
 
     $sql = "INSERT INTO user (username, password, role) VALUES (?, ?, ?)";
-    $row = $koneksi->execute_query($sql, [$username, $password, $role]);
+    $row = $conn->execute_query($sql, [$username, $password, $role]);
 
 }
 ?>
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form class="akun-form" action="" method="POST">
+    <form class="akun-form" action="login.php" method="POST">
     <h1>Create Account</h1>
         <div>
             <input type="text" name="username" id="username" placeholder="username">
