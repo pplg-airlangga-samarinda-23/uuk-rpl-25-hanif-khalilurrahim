@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require 'config.php';
 $sql = "select * from data_bayi";
 $rows = $conn->execute_query($sql)->fetch_all(MYSQLI_ASSOC);
@@ -11,8 +11,8 @@ $rows = $conn->execute_query($sql)->fetch_all(MYSQLI_ASSOC);
     <title>Data</title>
 </head>
 <body>
-        <div class="card-body">
-            <table id="datatablesSimple">
+        <div>
+            <table>
                 <thead>
                 <th>Nama</th>
                 <th>Tinggi</th>

@@ -6,14 +6,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 }
 
 include 'config.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $role = $_POST['role'];
 
     $sql = "INSERT INTO user (username, password, role) VALUES (?, ?, ?)";
     $row = $conn->execute_query($sql, [$username, $password, $role]);
-
+    header("location: login.php");
 }
 ?>
 
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form class="akun-form" action="login.php" method="POST">
+    <form class="akun-form" method="post">
     <h1>Create Account</h1>
         <div>
             <input type="text" name="username" id="username" placeholder="username">
@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div>
             <select name="role" id="role">
-            <option values=""></option>
-            <option values="kader">kader</option>
+                <option values=""></option>
+                <option values="kader">kader</option>
             </select>
         </div>
         <button type="submit">Enter</button>

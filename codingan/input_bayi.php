@@ -6,13 +6,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'kader') {
 }
 
 include 'config.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama = $_POST['nama'];
     $tinggi = $_POST['tinggi'];
     $berat = $_POST['berat'];
 
     $sql = "INSERT INTO data_bayi (nama, tinggi, berat) VALUES (?, ?, ?)";
     $row = $conn->execute_query($sql, [$nama, $tinggi, $berat]);
+    header("location: data_bayi.php");
 
 }
 ?>
@@ -25,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-    <form class="bayi-form" method="POST" action="data_bayi.php">
+    <form class="bayi-form" method="POST" >
         <h2>Masukkan Data Bayi</h2>
         <input type="text" name="nama" placeholder="nama" required><br>
         <input type="text" name="tinggi" placeholder="tinggi" required><br>
         <input type="text" name="berat" placeholder="berat" required><br>
-        <button type="submit">Kirim</button>
+        <button type="submit" href="data_bayi.php">Kirim</button>
     </form>
 
 </body>
