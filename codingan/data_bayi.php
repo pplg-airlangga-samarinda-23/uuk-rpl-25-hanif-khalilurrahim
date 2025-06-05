@@ -9,6 +9,7 @@ $rows = $conn->execute_query($sql)->fetch_all(MYSQLI_ASSOC);
 <html lang="en">
 <head>
     <title>Data</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
         <div>
